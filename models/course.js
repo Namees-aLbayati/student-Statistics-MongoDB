@@ -15,15 +15,17 @@ const courseSchema=new mongoose.Schema({
        type:Date,
        default:()=>new Date(+new Date() +28*24*60*60*1000)
    },
+   studentsInfo:[{type:mongoose.Schema.ObjectId,ref:'Student'}]
 });
 
 
 
 const Course=mongoose.model('Course',courseSchema);
-Course.create({courseName:'new course here',inperson:true},(err,data)=>{
-    if(err){
-        throw err
-    }
-    console.log('courses data created')
-})
-module.exports=courseSchema
+// Course.create({courseName:'new course here',inperson:true},(err,data)=>{
+//     if(err){
+//         throw err
+//     }
+//     console.log('courses data created')
+// })
+
+module.exports=Course

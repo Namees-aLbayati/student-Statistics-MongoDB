@@ -72,10 +72,9 @@ a.getDocumentInfo()
 
 
 app.get('/myget', (req, res) => {
-    student.find({}, (err, data) => {
-        err ? console.log('err') : res.json(data)
+    student.find({}).exec((err,data)=>{
+      res.send(data)
     })
-
 })
 
 
