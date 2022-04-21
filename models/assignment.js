@@ -1,9 +1,10 @@
 const mongoose = require('mongoose')
+const coursesSchema=require('./course')
 const assignmentSchema=new mongoose.Schema({
-    assignmentId:{
-        type:mongoose.Schema.Types.ObjectId,
-        default:()=>new Types.ObjectId
-    },
+    // assignmentId:{
+    //     type:mongoose.Schema.Types.ObjectId,
+    //     default:()=>new Types.ObjectId
+    // },
     assgntName:{
         type:String
     },
@@ -14,10 +15,15 @@ const assignmentSchema=new mongoose.Schema({
     createdAt:{
         type:Date,
         default:Date.now()
-    }
+    },
+
+
 
 });
+
 // const ass=mongoose.model('ass',assignmentSchema);
 
 // const Assignment=mongoose.model('Assignment',assignmentSchema);
+
 module.exports=assignmentSchema;
+

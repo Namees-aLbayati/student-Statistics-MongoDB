@@ -1,5 +1,4 @@
 const mongoose=require('mongoose');
-const trystudent=require('./student')
 const courseSchema=new mongoose.Schema({
    courseName:{
        type:String,
@@ -14,10 +13,17 @@ const courseSchema=new mongoose.Schema({
    },
    endDate:{
        type:Date,
-       default:()=>new Date(+new Date()+84*24*60*60*1000)
+       default:()=>new Date(+new Date() +28*24*60*60*1000)
    },
-   students:[trystudent]
 });
 
 
+
 const Course=mongoose.model('Course',courseSchema);
+Course.create({courseName:'new course here',inperson:true},(err,data)=>{
+    if(err){
+        throw err
+    }
+    console.log('courses data created')
+})
+module.exports=courseSchema
