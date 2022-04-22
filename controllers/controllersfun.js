@@ -23,15 +23,38 @@ return Student.findOneAndUpdate(
     console.log('err')
     console.log(err)
 
-})
-        
-        
-        
-        
-        
-        
-        
-        }
+})},
+// createCourses(req,res){
+// Course.create(req.body).then((result)=>{
+//  return Course.findOneAndUpdate(
+//         {_id:req.body.courseId},
+//         {$addToSet:{studentsInfo:{_id:result._id}}},
+//         {new:true}
+//     )
+
+// })
+// }
+
+createCourses(req,res){
+
+Student.create(req.body).then((studentData)=>{
+    return Course.findOneAndUpdate(
+        {_id:req.body.courseId},
+        {$addToSet:{studentsInfo:{_id:studentData._id}}},
+        {new:true}
+    )
+}).then((data)=> res.json(data)).catch((err)=>[
+    console.log(err)
+])
+
+
+
+},
+getCourse(req,res){
+    Course.find({}).populate('studentsInfo').then((data)=>{
+        res.json(data)
+    })
+}
 
                
 

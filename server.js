@@ -3,12 +3,12 @@ const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
-const {studentData,createAssgnmt}=require('./controllers/controllersfun')
+const {studentData,createAssgnmt,createCourses,getCourse}=require('./controllers/controllersfun')
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.route('/').get(studentData).post(createAssgnmt)
-
+app.route('/course').get(getCourse).post(createCourses)
 
 
 
