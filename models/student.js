@@ -27,14 +27,15 @@ const studentSchema=new Schema({
 {
     toJSON:{
         virtuals:true
-    }
+    },
+    id:false
 }
 );
 
 
-studentSchema.virtual('fullName').get(function () {
-    return this.firstName+this.lastname
-  });
+// studentSchema.virtual('fullName').get(function () {
+//     return this.firstName+this.lastname
+//   });
 
 
 
@@ -49,6 +50,7 @@ const Student=model('Student',studentSchema);
 //     }
 //     console.log(" added success")
 // })
+
 
 
 

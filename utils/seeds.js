@@ -3,8 +3,10 @@ const {Student,Courses,Assignment}=require('../models');
 const Course = require('../models/course');
 const ObjectId=require('mongoose')
 const idArray=[]
+console.time('start seeding')
+
 const assignmentsData=[{
-    assgntName:'fifth'
+    assgntName:'eighths'
 },{
     assgntName:'fourth assignment'
 }]
@@ -19,35 +21,33 @@ connection.once('open',async()=>{
     await Assignment.deleteMany({})
 
     await Assignment.collection.insertMany(assignmentsData)
-    const a=await Assignment.find({},(err,data)=>{
-
-        for(var i=0;i<data.length;i++){
-                    idArray.push(data[i])
-                    console.log(idArray)
-
-        }
-    }).clone().catch(function(err){ console.log(err)})
 
     // const b=await Student.find({},(err,data)=>{
     //    console.log('j')
     // }).clone().catch(function(err){ console.log(err)})
     const studentData=[
         {
-            firstName:'layth',
+            firstName:'ghalib',
             lastname:'najm',
             github:'layth@github',
-            DOB:'1989-21-06',
-            assignments:assignmentsData
-            //    assignments: 
     
             
+        },{
+
+            firstName:'salehhh',
+            lastname:'moh',
+            github:'layth@github',
+
         }]
+
+     
     
 
 
-        await Student.collection.insertOne(studentData[0])
+        await Student.collection.insertMany(studentData)
+       console.timeEnd('end seed')
 
-
+process.exit(0)
 
 
 })

@@ -1,10 +1,7 @@
 const mongoose = require('mongoose')
 const coursesSchema=require('./course')
 const assignmentSchema=new mongoose.Schema({
-    assignmentId:{
-        type:mongoose.Schema.Types.ObjectId,
-        default:()=>new Types.ObjectId
-    },
+  
     assgntName:{
         type:String
     },
@@ -19,7 +16,15 @@ const assignmentSchema=new mongoose.Schema({
 
 
 
+},{
+    toJSON:{
+        virtuals:true
+    }
 });
+
+// assignmentSchema.virtual('collectionsOfAssignment').get(function(){
+//     return this.assgntName
+// })
 
 // const ass=mongoose.model('ass',assignmentSchema);
 
